@@ -55,6 +55,17 @@ jobs:
             target/site/
             reports/
 
+      # Step 7 This step uploads the JAR file as an artifact
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v4
+        with:
+          # This name is what the download step will use to find the artifact
+          name: tradestore-producer-jar
+          # This path must correctly point to the file that was just built
+          path: target/tradestore-producer.jar
+          # Optional: Make sure the file exists, or fail with an error
+          if-no-files-found: 'error'
+          
   # Job for deploying the application (depends on the previous job succeeding)
   deploy:
     runs-on: ubuntu-latest
