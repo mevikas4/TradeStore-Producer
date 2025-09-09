@@ -36,7 +36,7 @@ jobs:
         env:
           # Actions/setup-java changes JAVA_HOME for the runner,
           # so we reset it here to match the path within the Dependency-Check image
-          JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64/
+          JAVA_HOME: /opt/jdk
         with:
           project: 'spring-boot-app'
           path: '.'
