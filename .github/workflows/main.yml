@@ -32,7 +32,7 @@ jobs:
 
       # Step 5: Perform Open Source Vulnerability Scan (using OWASP Dependency-Check)
       - name: OWASP Dependency-Check Scan
-        uses: dependency-check/dependency-check_action@v7 # Or use Snyk action: snyk/actions/maven@master
+        uses: dependency-check/Dependency-Check_Action@main # Or use Snyk action: snyk/actions/maven@master
         with:
           project: 'spring-boot-app'
           path: '.'
