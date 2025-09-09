@@ -28,11 +28,13 @@ jobs:
 
       # Step 4: Build the application and run automated tests
       - name: Build and run tests with Maven
-        run: ./mvnw clean verify # 'verify' runs tests and builds the project
+        run: |
+            export JAVA_HOME=${JAVA_HOME_17_X64} 
+            ./mvnw clean verify # 'verify' runs tests and builds the project
 
       # Step 5: Perform Open Source Vulnerability Scan (using OWASP Dependency-Check)
       - name: OWASP Dependency-Check Scan
-        uses: dependency-check/dependency-check_action@v6 # Or use Snyk action: snyk/actions/maven@master
+        uses: dependency-check/Dependency-Check_Action@main # Or use Snyk action: snyk/actions/maven@master
         with:
           project: 'spring-boot-app'
           path: '.'
@@ -63,7 +65,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: target/spring-boot-app.jar # Adjust the JAR name if needed
+          name: target/tradestore-producer.jar # Adjust the JAR name if needed
             
         # Step 7: Deployment to a server (Example: using a deployment tool or SSH)
       - name: Deploy to production server
