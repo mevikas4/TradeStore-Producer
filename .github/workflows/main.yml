@@ -81,7 +81,7 @@ jobs:
           name: tradestore-producer.jar # Adjust the JAR name if needed
             
         # Step 7: Deployment to a server (Example: using a deployment tool or SSH)
-      - name: Deploy to production server
+#      - name: Deploy to production server
 #        uses: appleboy/ssh-action@v1.0.0
 #        with:
 #          host: ${{ secrets.DEPLOY_SERVER_HOST }}
