@@ -62,7 +62,7 @@ jobs:
           # This name is what the download step will use to find the artifact
           name: tradestore-producer-jar
           # This path must correctly point to the file that was just built
-          path: target/tradestore-producer.jar
+          path: target/TradeStore-Producer-0.0.1-SNAPSHOT.jar
           # Optional: Make sure the file exists, or fail with an error
           if-no-files-found: 'error'
           
