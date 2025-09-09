@@ -28,13 +28,15 @@ jobs:
 
       # Step 4: Build the application and run automated tests
       - name: Build and run tests with Maven
-        run: |
-            export JAVA_HOME=${JAVA_HOME_17_X64} 
-            ./mvnw clean verify # 'verify' runs tests and builds the project
+        run: ./mvnw clean verify # 'verify' runs tests and builds the project
 
       # Step 5: Perform Open Source Vulnerability Scan (using OWASP Dependency-Check)
       - name: OWASP Dependency-Check Scan
         uses: dependency-check/Dependency-Check_Action@main # Or use Snyk action: snyk/actions/maven@master
+        env:
+          # Actions/setup-java changes JAVA_HOME for the runner,
+          # so we reset it here to match the path within the Dependency-Check image
+          JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.16-8/x64/bin/java
         with:
           project: 'spring-boot-app'
           path: '.'
