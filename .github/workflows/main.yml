@@ -82,28 +82,28 @@ jobs:
             
         # Step 7: Deployment to a server (Example: using a deployment tool or SSH)
       - name: Deploy to production server
-        uses: appleboy/ssh-action@v1.0.0
-        with:
-          host: ${{ secrets.DEPLOY_SERVER_HOST }}
-          username: ${{ secrets.DEPLOY_SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: 22
-          script: |
-            # Navigate to the deployment directory
-            DEPLOY_DIR="/opt/my-app"
-            cd "$DEPLOY_DIR"
-            
-            # Stop the currently running service
-            sudo systemctl stop tradestore-producer.service || true
-            
-            # Remove the old JAR and move the new one
-            rm -f tradestore-producer.jar.old
-            mv tradestore-producer.jar tradestore-producer.jar.old
-            mv tradestore-producer.jar tradestore-producer.jar
-            
-            # Start the new application
-            sudo systemctl start tradestore-producer.service
-            
-            # Optional: Check the service status to verify deployment
-            sleep 10
-            sudo systemctl status tradestore-producer.service
+#        uses: appleboy/ssh-action@v1.0.0
+#        with:
+#          host: ${{ secrets.DEPLOY_SERVER_HOST }}
+#          username: ${{ secrets.DEPLOY_SERVER_USER }}
+#          key: ${{ secrets.SSH_PRIVATE_KEY }}
+#          port: 22
+#          script: |
+#            # Navigate to the deployment directory
+#            DEPLOY_DIR="/opt/my-app"
+#            cd "$DEPLOY_DIR"
+#
+#            # Stop the currently running service
+#            sudo systemctl stop tradestore-producer.service || true
+#
+#            # Remove the old JAR and move the new one
+#            rm -f tradestore-producer.jar.old
+#            mv tradestore-producer.jar tradestore-producer.jar.old
+#            mv tradestore-producer.jar tradestore-producer.jar
+#
+#            # Start the new application
+#            sudo systemctl start tradestore-producer.service
+#
+#            # Optional: Check the service status to verify deployment
+#            sleep 10
+#            sudo systemctl status tradestore-producer.service
