@@ -40,7 +40,7 @@ jobs:
         with:
           project: 'spring-boot-app'
           path: '.'
-          format: 'HTML,SARIF'
+          format: 'HTML'
           out: 'reports'
           args: '--failOnCVSS 7' # Fail build on vulnerabilities with CVSS score 7 or higher
 
