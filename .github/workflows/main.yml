@@ -28,9 +28,7 @@ jobs:
 
       # Step 4: Build the application and run automated tests
       - name: Build and run tests with Maven
-        run: |
-            export JAVA_HOME=${JAVA_HOME_17_X64} 
-            ./mvnw clean verify # 'verify' runs tests and builds the project
+        run: ./mvnw clean verify # 'verify' runs tests and builds the project
 
       # Step 5: Perform Open Source Vulnerability Scan (using OWASP Dependency-Check)
       - name: OWASP Dependency-Check Scan
