@@ -78,7 +78,7 @@ jobs:
       - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
-          name: target/tradestore-producer.jar # Adjust the JAR name if needed
+          name: target/TradeStore-Producer-0.0.1-SNAPSHOT.jar # Adjust the JAR name if needed
             
         # Step 7: Deployment to a server (Example: using a deployment tool or SSH)
       - name: Deploy to production server
@@ -98,8 +98,8 @@ jobs:
             
             # Remove the old JAR and move the new one
             rm -f spring-boot-app.jar.old
-            mv spring-boot-app.jar spring-boot-app.jar.old
-            mv target/spring-boot-app.jar spring-boot-app.jar
+            mv TradeStore-Producer-0.0.1-SNAPSHOT.jar TradeStore-Producer-0.0.1-SNAPSHOT.jar.old
+            mv target/TradeStore-Producer-0.0.1-SNAPSHOT.jar TradeStore-Producer-0.0.1-SNAPSHOT.jar
             
             # Start the new application
             sudo systemctl start spring-boot-app.service
