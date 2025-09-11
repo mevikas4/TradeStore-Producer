@@ -1,0 +1,65 @@
+@startuml
+
+package com.example.model {
+    class User {
+        - Long id
+        - String name
+        - String email
+        + getId(): Long
+        + getName(): String
+        + getEmail(): String
+    }
+
+    class Product {
+        - Long id
+        - String name
+        - Double price
+        + getId(): Long
+        + getName(): String
+        + getPrice(): Double
+    }
+}
+
+package com.example.repository {
+    interface UserRepository {
+        + findById(Long): User
+        + save(User): User
+    }
+    interface ProductRepository {
+        + findById(Long): Product
+        + save(Product): Product
+    }
+}
+
+package com.example.service {
+    class UserService {
+        - UserRepository userRepository
+        + getUser(Long): User
+        + createUser(User): User
+    }
+    class ProductService {
+        - ProductRepository productRepository
+        + getProduct(Long): Product
+        + createProduct(Product): Product
+    }
+}
+
+package com.example.controller {
+    class UserController {
+        - UserService userService
+        + getUser(Long): User
+        + createUser(User): User
+    }
+    class ProductController {
+        - ProductService productService
+        + getProduct(Long): Product
+        + createProduct(Product): Product
+    }
+}
+
+UserController --> UserService
+ProductController --> ProductService
+UserService --> UserRepository
+ProductService --> ProductRepository
+
+@enduml

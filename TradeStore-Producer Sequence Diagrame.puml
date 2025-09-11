@@ -1,0 +1,11 @@
+@startuml
+actor Client
+
+Client -> MessageController : POST /send (Trade)
+MessageController -> KafkaProducer : sendMessage(TOPIC_NAME, Trade)
+KafkaProducer -> KafkaTemplate : send(TOPIC_NAME, Trade)
+KafkaProducer -> Console : print("Message ... sent to the topic ...")
+KafkaProducer --> MessageController : void
+MessageController --> Client : void
+
+@enduml
